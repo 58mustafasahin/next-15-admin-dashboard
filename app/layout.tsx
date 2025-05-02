@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from '@/lib/constants'
 import "./globals.css";
 import { inter } from "@/components/shared/fonts";
+import { ThemeProvider } from "next-themes";
 
 export const experimental_ppr = true
 
@@ -25,7 +26,14 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased`}
       >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
         {children}
+        </ThemeProvider>
       </body>
     </html>
   );
