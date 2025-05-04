@@ -9,6 +9,9 @@ import {
 } from 'drizzle-orm/pg-core'
 import { sql } from 'drizzle-orm'
 
+//https://github.com/drizzle-team/drizzle-orm/issues/1238#issuecomment-2849234595
+//https://github.com/drizzle-team/drizzle-orm/issues/3697
+
 export const customers = pgTable('customers', {
     id: uuid('id')
         .default(sql`gen_random_uuid()`)
