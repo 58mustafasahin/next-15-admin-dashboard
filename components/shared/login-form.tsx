@@ -1,5 +1,5 @@
 'use client'
-import { authenticate } from "@/lib/actions/user.action";
+import { authenticate } from "@/lib/actions/user.actions";
 import { useActionState } from "react";
 import { lusitana } from "./fonts";
 import { ArrowRightIcon, AtSign, CircleAlert, LockKeyhole } from "lucide-react";
