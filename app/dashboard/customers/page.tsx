@@ -1,20 +1,23 @@
 import CustomersTable from '@/components/shared/customers/table'
 import { fetchFilteredCustomers } from '@/lib/actions/customer.actions'
-import { Metadata } from 'next'
+import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {
     title: 'Customers',
 }
 
-export default async function Page({
-    searchParams,
-}: {
+interface PageProps {
     searchParams?: {
         query?: string
         page?: string
     }
-}) {
-    const query = searchParams?.query || ''
+}
+
+const Page: NextPage<PageProps> = async ({ searchParams }) => {
+    // Await searchParams to ensure it's ready before accessing it
+    const resolvedSearchParams = await searchParams
+
+    const query = resolvedSearchParams?.query || ''
 
     const customers = await fetchFilteredCustomers(query)
 
@@ -24,3 +27,5 @@ export default async function Page({
         </main>
     )
 }
+
+export default Page
