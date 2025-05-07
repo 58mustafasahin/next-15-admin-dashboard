@@ -14,16 +14,20 @@ export const metadata: Metadata = {
     title: 'Invoices',
 }
 
-export default async function Page({
-    searchParams,
-}: {
-    searchParams?: {
+interface PageProps {
+    // Make searchParams a Promise as Next.js expects
+    searchParams?: Promise<{
         query?: string
         page?: string
-    }
-}) {
-    const query = searchParams?.query || ''
-    const currentPage = Number(searchParams?.page) || 1
+    }>
+}
+
+export default async function Page({ searchParams }: PageProps) {
+    
+    const resolvedSearchParams = await searchParams
+
+    const query = resolvedSearchParams?.query || ''
+    const currentPage = Number(resolvedSearchParams?.page) || 1
 
     const totalPages = await fetchInvoicesPages(query)
 

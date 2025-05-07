@@ -7,10 +7,11 @@ export const metadata: Metadata = {
 }
 
 interface PageProps {
-    searchParams?: {
+    // Update searchParams to be a Promise
+    searchParams?: Promise<{
         query?: string
         page?: string
-    }
+    }>
 }
 
 const Page: NextPage<PageProps> = async ({ searchParams }) => {
