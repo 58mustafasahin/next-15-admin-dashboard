@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Build Dashboard App By Next.js 15, Drizzle ORM and Shadcn
 
-## Getting Started
+|                |                                                                 |
+| -------------- | --------------------------------------------------------------- |
+| Tech           | Next.js 15, React 19, PostgreSQL, Drizzle Orm, Shadcn, Tailwind |
+| UI             | Tailwind, Shadcn, recharts                                      |
+| Database       | PostgreSQL, Drizzle Orm                                         |
+| Deployment     | Github, Vercel                                                  |
+| Authentication | Auth.js, bcryptjs                                               |
+| Others         | zod , next-theme, ...                                           |
 
-First, run the development server:
+[![next-15-admin-dashboard](/public/next-15-admin-dashboard.png)](https://58mustafasahin-next-15-admin-dashboard.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## View Demo Website
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://58mustafasahin-next-15-admin-dashboard.vercel.app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What you will learn
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- creating admin dashboard web app by next.js 15 and react 19
+- designing header, footer, sidebar, menu and search box by shadcn and tailwind
+- enable partial pre-rendering to improve website performance
+- create database models by drizzle orm and postgres database to handle invoices, customers and users.
+- handling form inputs by useActionState and Zod data validator
+- updating data by server actions without using any api
+- rendering beautiful charts by recharts
+- handling authentication and authorization by next-auth
+- and toggling dark and light theme by next-theme
+- at the end you'll learn how to deploy admin dashboard on vercel.
 
-## Learn More
+## Run Locally
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone repo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```shell
+    $ git clone git@github.com:58mustafasahin/next-15-admin-dashboard.git
+    $ cd next-15-admin-dashboard
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Create .env.local File
 
-## Deploy on Vercel
+- duplicate .env.example and rename it to .env.local
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Setup PostgreSQL
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   - Create database at https://vercel.com/docs/storage/vercel-postgres
+   - In .env.local file update POSTGRES_URL to db url
+
+4. Install and Run
+
+   ```shell
+     npm install
+     npm run dev
+   ```
+
+5. Seed Data
+
+   ```shell
+     npx tsx ./db/seed
+   ```
+
+6. Admin Login
+
+   - Open http://localhost:3000
+   - Click Login button
+   - Enter admin email "user@nextmail.com" and password "123456" and click Sign In
+
+## Lessons
+
+(You can see from the commits)
+
+1. create home page
+2. create login page
+3. create dashboard page
+4. connect to database by drizzle orm
+5. load stats boxes data from database
+6. display revenue chart
+7. create latest invoices table
+8. authenticate user from database
+9. list or delete invoices
+10. create or update invoices
+11. list customers
+12. enable partial pre-rendering
+13. deploy app on vercel
